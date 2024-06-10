@@ -13,6 +13,7 @@ export default function Home() {
 
     const { data: session } = useSession()
 
+    //var
     const [dayCount, setDayCount] = useState(1);
     const [dates, setDates] = useState<string[]>([]);
 
@@ -69,8 +70,6 @@ export default function Home() {
     const [errors, setErrors] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
 
-
-
     if (session && session.user) {
         return (
             <div className="m-12">
@@ -95,11 +94,31 @@ export default function Home() {
                                             name="lecturer-count"
                                             autoComplete="lecturer-count"
                                             className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                                            onChange={(e) => setLecturerCount(parseInt(e.target.value, 10))}
+                                            onChange={handleLecturerCountChange}
                                         >
                                         </input>
                                     </div>
                                 </div>
+
+                                <div className="sm:col-span-1">
+                                    <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-900">
+                                        บัญชีผู้ใช้
+                                    </label>
+                                    <div className="mt-2">
+                                        <input
+                                            disabled
+                                            value={session.user.name || ''}
+                                            type="text"
+                                            id="lecturer-count"
+                                            name="lecturer-count"
+                                            autoComplete="lecturer-count"
+                                            className="px-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                                            onChange={handleLecturerCountChange}
+                                        >
+                                        </input>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
